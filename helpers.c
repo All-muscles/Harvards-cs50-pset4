@@ -68,7 +68,7 @@ void reflect(int height, int width, RGBTRIPLE image[height][width])
 {
     for (int i = 0; i < height; i++)
     {
-        for (int j = 0; j < width; j++)
+        for (int j = 0, half = width / 2; j < half; j++)
         {
             // swap pixels from left to right, we could just create a new array which would be a simpler approach but efficiency wise this is the best way around
 
@@ -83,7 +83,7 @@ void reflect(int height, int width, RGBTRIPLE image[height][width])
             image[i][j].rgbtGreen = image[i][width - 1 - j].rgbtGreen;
             image[i][j].rgbtBlue = image[i][width - 1 - j].rgbtBlue;
 
-            // put the value of the copy in the 
+            // put the value of the copy in the right variable
             image[i][width - 1 - j].rgbtRed = tmp.rgbtRed;
             image[i][width - 1 - j].rgbtGreen = tmp.rgbtGreen;
             image[i][width - 1 - j].rgbtBlue = tmp.rgbtBlue;
