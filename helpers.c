@@ -66,7 +66,29 @@ void sepia(int height, int width, RGBTRIPLE image[height][width])
 // Reflect image horizontally
 void reflect(int height, int width, RGBTRIPLE image[height][width])
 {
-    return;
+    for (int i = 0; i < height; i++)
+    {
+        for (int j = 0; j < width; j++)
+        {
+            // swap pixels from left to right, we could just create a new array which would be a simpler approach but efficiency wise this is the best way around
+
+            // make a temporary variable to store 
+            RGBTRIPLE tmp;
+            tmp.rgbtRed = image[i][j].rgbtRed;
+            tmp.rgbtGreen = image[i][j].rgbtGreen;
+            tmp.rgbtBlue = image[i][j].rgbtBlue;
+
+            // change the value of the variable we have  a copy of 
+            image[i][j].rgbtRed = image[i][width - 1 - j].rgbtRed;
+            image[i][j].rgbtGreen = image[i][width - 1 - j].rgbtGreen;
+            image[i][j].rgbtBlue = image[i][width - 1 - j].rgbtBlue;
+
+            // put the value of the copy in the 
+            image[i][width - 1 - j].rgbtRed = tmp.rgbtRed;
+            image[i][width - 1 - j].rgbtGreen = tmp.rgbtGreen;
+            image[i][width - 1 - j].rgbtBlue = tmp.rgbtBlue;
+        } 
+    }
 }
 
 // Blur image
